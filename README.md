@@ -1,1 +1,0 @@
-# det-wise2021-hauptprojekt
