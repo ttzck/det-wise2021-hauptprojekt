@@ -34,9 +34,9 @@ MonoBehaviour:
     commandQueueSize: 60
     commandRedundancy: 6
     commandPingMultiplier: 1.25
-    useNetworkSimulation: 0
-    simulatedLoss: 0.02
-    simulatedPingMean: 200
+    useNetworkSimulation: 1
+    simulatedLoss: 0.1
+    simulatedPingMean: 60
     simulatedPingJitter: 10
     simulatedRandomFunction: 0
     connectionTimeout: 10000
@@ -44,14 +44,14 @@ MonoBehaviour:
     connectionRequestAttempts: 20
     disableAutoSceneLoading: 0
     EnableIPv6: 0
-  debugClientCount: 1
+  debugClientCount: 3
   debugStartPort: 50538
   debugBuildMode: 1
-  debugStartMapName: SimpleMoveAndShoot_Game
-  debugPlayAsServer: 1
-  showDebugInfo: 1
+  debugStartMapName: Test1
+  debugPlayAsServer: 0
+  showDebugInfo: 0
   overrideTimeScale: 1
-  debugEditorMode: 0
+  debugEditorMode: 1
   consoleToggleKey: 9
   consoleVisibleByDefault: 1
   compilationWarnLevel: 4
