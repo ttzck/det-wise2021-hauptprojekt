@@ -35,8 +35,8 @@ MonoBehaviour:
     commandRedundancy: 6
     commandPingMultiplier: 1.25
     useNetworkSimulation: 1
-    simulatedLoss: 0.1
-    simulatedPingMean: 60
+    simulatedLoss: 0.02
+    simulatedPingMean: 30
     simulatedPingJitter: 10
     simulatedRandomFunction: 0
     connectionTimeout: 10000
@@ -47,11 +47,11 @@ MonoBehaviour:
   debugClientCount: 3
   debugStartPort: 50538
   debugBuildMode: 1
-  debugStartMapName: Test1
+  debugStartMapName: Lobby
   debugPlayAsServer: 0
   showDebugInfo: 0
   overrideTimeScale: 1
-  debugEditorMode: 1
+  debugEditorMode: 2
   consoleToggleKey: 9
   consoleVisibleByDefault: 1
   compilationWarnLevel: 4

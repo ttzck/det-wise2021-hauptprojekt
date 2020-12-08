@@ -10,6 +10,11 @@ public class Test1EntityScript : EntityEventListener<ITestEntityState>
         state.SetTransforms(state.Transform, transform);
 
         state.AddCallback(nameof(state.Color), () => GetComponent<SpriteRenderer>().color = state.Color);
+
+        if (!entity.IsOwner)
+        {
+            Destroy(GetComponent<Rigidbody2D>());
+        }
     }
 
     private void Update()
@@ -19,7 +24,7 @@ public class Test1EntityScript : EntityEventListener<ITestEntityState>
             if (Input.GetMouseButtonDown(0))
             {
                 var force = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position) * 100f;
-                HitEvent.Post(GlobalTargets.OnlyServer, force, state.Guid);
+                HitEvent.Post(GlobalTargets.OnlyServer, force, state.Guid); 
             }
         }
     }
