@@ -12,4 +12,9 @@ public class OfflineGolfBallBehaviour : MonoBehaviour
 
         gBB.Hit += (force) => rb.AddForce(force);
     }
+
+    private void Update()
+    {
+        gBB.Ready = rb.velocity.magnitude == 0;
+    }
 }
