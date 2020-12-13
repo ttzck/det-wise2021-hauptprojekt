@@ -21,7 +21,7 @@ public class NetworkedGolfBallBehaviour : EntityEventListener<IGolfBallState>
     {
         if (entity.HasControl)
         {
-            gBB.Hit += (force) => HitEvent.Post(GlobalTargets.OnlyServer, force, state.Guid);
+            gBB.Hit += (force) => HitEvent.Post(GlobalTargets.OnlyServer, force, entity.NetworkId);
         }
     }
 

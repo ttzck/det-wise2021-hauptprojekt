@@ -85,24 +85,9 @@
           }
         },
         {
-          "Name": "Guid",
-          "Enabled": true,
-          "ReplicationMode": 1,
-          "Priority": 1,
-          "PropertyType": {
-            "$type": "Bolt.Compiler.PropertyTypeGuid, bolt.compiler"
-          },
-          "AssetSettings": {
-            "$type": "Bolt.Compiler.PropertyStateSettings, bolt.compiler",
-            "ExtrapolationErrorTolerance": 0.25,
-            "_ExtrapolationCorrectionFrames": 6,
-            "ExtrapolationMaxFrames": 9,
-            "SnapMagnitude": 10.0
-          }
-        },
-        {
           "Name": "Color",
           "Enabled": true,
+          "Expanded": true,
           "ReplicationMode": 1,
           "Priority": 1,
           "PropertyType": {
@@ -427,13 +412,13 @@
           }
         },
         {
-          "Name": "Guid",
+          "Name": "Id",
           "Enabled": true,
           "Expanded": true,
           "ReplicationMode": 1,
           "Priority": 1,
           "PropertyType": {
-            "$type": "Bolt.Compiler.PropertyTypeGuid, bolt.compiler"
+            "$type": "Bolt.Compiler.PropertyTypeNetworkId, bolt.compiler"
           },
           "AssetSettings": {
             "$type": "Bolt.Compiler.PropertyEventSettings, bolt.compiler"

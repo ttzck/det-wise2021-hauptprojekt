@@ -851,7 +851,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cba8a21674af9cc4a9599b4f6c7d5eb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameScene: Test1
+  gameScene: Main
   connectionUiText: {fileID: 1589609365}
   sesssionIdUiInputField: {fileID: 1997317029}
   startGameUiElement: {fileID: 1220503859}

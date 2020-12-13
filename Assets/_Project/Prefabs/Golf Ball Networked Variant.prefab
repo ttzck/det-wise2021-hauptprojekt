@@ -1,17 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-3836505940551482916
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6345787678505367822}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c833774379a2764bb3ab54414ba0a8f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &-1028417300031698694
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25,7 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sceneGuid: 
-  _serializerGuid: 00000000-0000-0000-0000-000000000000
+  _serializerGuid: 7d03c492-5f5b-475c-b31c-7007f1f72f9d
   _prefabId: 1
   _updateRate: 1
   _autoFreezeProxyFrames: 0
@@ -108,7 +96,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Golf Ball Networked Variant
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2273946946386714386, guid: 0e9044e9232648f4d9bf915157145a30, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0e9044e9232648f4d9bf915157145a30, type: 3}
 --- !u!1 &6345787678505367822 stripped
 GameObject:
