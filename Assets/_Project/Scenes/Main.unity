@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 65581776}
   - component: {fileID: 65581775}
   - component: {fileID: 65581774}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -275,6 +275,8 @@ GameObject:
   - component: {fileID: 517388973}
   - component: {fileID: 517388972}
   - component: {fileID: 517388971}
+  - component: {fileID: 517388975}
+  - component: {fileID: 517388976}
   m_Layer: 0
   m_Name: Systems
   m_TagString: Untagged
@@ -334,6 +336,44 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &517388975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 517388970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ef2fbb214d886d4bb8c8ebdd99e9898, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  golfBallLayerMask:
+    serializedVersion: 2
+    m_Bits: 512
+  wallLayerMask:
+    serializedVersion: 2
+    m_Bits: 256
+--- !u!114 &517388976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 517388970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09b2b523c64c94b47b13d47cd37d10f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  golfBallLayerMask:
+    serializedVersion: 2
+    m_Bits: 512
+  wallLayerMask:
+    serializedVersion: 2
+    m_Bits: 256
+  particleEffects:
+  - {fileID: 6636682048262276418, guid: a661c3a2140c3464c88a5c7073191f63, type: 3}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -509,7 +549,7 @@ GameObject:
   - component: {fileID: 810763257}
   - component: {fileID: 810763256}
   - component: {fileID: 810763255}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -741,7 +781,7 @@ GameObject:
   - component: {fileID: 1531511510}
   - component: {fileID: 1531511509}
   - component: {fileID: 1531511508}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -849,7 +889,7 @@ GameObject:
   - component: {fileID: 1569961480}
   - component: {fileID: 1569961479}
   - component: {fileID: 1569961478}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}

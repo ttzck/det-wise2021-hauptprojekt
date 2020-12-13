@@ -5,10 +5,10 @@ using Bolt;
 
 public class GolfBallHitSystem : GlobalEventListener
 {
-    public override void OnEvent(HitEvent hit)
+    public override void OnEvent(HitEvent hitEvent)
     {
-        BoltNetwork.FindEntity(hit.Id)
+        BoltNetwork.FindEntity(hitEvent.Id)
             .GetComponent<Rigidbody2D>()
-            .AddForce(hit.Force);
+            .AddForce(hitEvent.Force);
     }
 }
