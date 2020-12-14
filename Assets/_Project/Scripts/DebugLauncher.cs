@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using Bolt;
 using Bolt.Matchmaking;
-using System;
 
 public class DebugLauncher : GlobalEventListener
 {
@@ -16,7 +15,7 @@ public class DebugLauncher : GlobalEventListener
     public override void BoltStartDone()
     {
         BoltMatchmaking.CreateSession(
-            sessionID: Guid.NewGuid().ToString(),
+            sessionID: "test",
             sceneToLoad: "Main"
         );
     }
