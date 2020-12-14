@@ -4,6 +4,9 @@ using System.Linq;
 
 public class GolfBallSpawnerSystem : GlobalEventListener
 {
+    private const int V = 5;
+    float TimeStamp = 0 ;
+
     private void Start()
     {
         if (BoltNetwork.IsServer) SpawnGolfBalls();
@@ -25,6 +28,24 @@ public class GolfBallSpawnerSystem : GlobalEventListener
         for (int j = 0; j < GlobalSettings.NumberOfGolfBallsPerTeam; j++)
         {
             SpawnGolfBall(client, color, GetRandomPosition(), teamId);
+        }
+    }
+
+    private  void SpawnCollecteble()
+    {
+        for (int i = 0; i < GlobalSettings.NumberOfCollectable; i++)
+        {
+            BoltNetwork.Instantiate(BoltPrefabs.Star, GetRandomPosition(), Quaternion.identity);
+           
+        }
+        TimeStamp = BoltNetwork.Time;
+    }
+
+    private void Update()
+    {
+        if (BoltNetwork.Time > TimeStamp + V)
+        {
+            SpawnCollecteble();
         }
     }
 
