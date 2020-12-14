@@ -277,6 +277,7 @@ GameObject:
   - component: {fileID: 517388971}
   - component: {fileID: 517388975}
   - component: {fileID: 517388976}
+  - component: {fileID: 517388977}
   m_Layer: 0
   m_Name: Systems
   m_TagString: Untagged
@@ -374,6 +375,24 @@ MonoBehaviour:
     m_Bits: 256
   particleEffects:
   - {fileID: 6636682048262276418, guid: a661c3a2140c3464c88a5c7073191f63, type: 3}
+--- !u!114 &517388977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 517388970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db5d3630a9845fe46a4706c3bec3e062, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  golfBallLayerMask:
+    serializedVersion: 2
+    m_Bits: 512
+  collectablesLayerMask:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -699,7 +718,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1472832782}
   - component: {fileID: 1472832781}
-  m_Layer: 0
+  - component: {fileID: 1472832783}
+  m_Layer: 10
   m_Name: Star
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -770,6 +790,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &1472832783
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1472832780}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.1
 --- !u!1 &1531511507
 GameObject:
   m_ObjectHideFlags: 0

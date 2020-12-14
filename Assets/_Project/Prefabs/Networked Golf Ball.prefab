@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 7227117117045515030}
   - component: {fileID: -8451206821120696011}
   - component: {fileID: -3059290016929712924}
+  - component: {fileID: 3538545074028785533}
   m_Layer: 9
   m_Name: Networked Golf Ball
   m_TagString: Untagged
@@ -194,3 +195,19 @@ MonoBehaviour:
   - {fileID: 5393361784935558519}
   - {fileID: 3557064397976888277}
   removalCondition: 2
+--- !u!114 &3538545074028785533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3557064397976888274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f377b56dfead0244384bd68144930fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreIndicatorPrefab: {fileID: 804125703922013773, guid: 24ce7363f66e4f84eace673eea2c4a7b,
+    type: 3}
+  indicatorDistance: 0.2
+  rotationSpeed: 500

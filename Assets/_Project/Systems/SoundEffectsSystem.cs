@@ -11,7 +11,7 @@ public class SoundEffectsSystem : GlobalEventListener
     private void Start()
     {
         if (BoltNetwork.IsServer)
-            CollisionNotifier.Collision += OnCollision;
+            ColliderNotifier.CollisionEntered += OnCollision;
     }
 
     private void OnCollision(GameObject a, GameObject b)
