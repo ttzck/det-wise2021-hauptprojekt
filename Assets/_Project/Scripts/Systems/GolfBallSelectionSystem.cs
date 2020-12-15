@@ -7,10 +7,17 @@ using System.Linq;
 public class GolfBallSelectionSystem : MonoBehaviour
 {
     [SerializeField] private LineRenderer selectionIndicatorPrefab;
+    [SerializeField] private float hitChargeSpeed;
+    [SerializeField] private float maxIndicatorLength;
 
     private Camera cam;
-    private BoltEntity selectedGolfBall;
     private LineRenderer indicator;
+    private BoltEntity selectedGolfBall;
+    private float hitCharge;
+    private Vector2 hitDirection;
+
+    private enum State { NoneSelected, Selected, Charge }
+    private State state;
 
     private void Start()
     {
@@ -21,34 +28,96 @@ public class GolfBallSelectionSystem : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        switch (state)
         {
-            if (selectedGolfBall == null)
-                SelectGolfBall();
-            else
-                HitSelectedGolfBall();
+            case State.NoneSelected:
+                UpdateWithNoneSelected();
+                break;
+            case State.Selected:
+                UpdateWithSelected();
+                break;
+            case State.Charge:
+                UpdateWithCharge();
+                break;
         }
-
-        if (Input.GetMouseButtonDown(1))
-            selectedGolfBall = null;
 
         UpdateIndicator();
     }
 
-    private void UpdateIndicator()
+    private void UpdateWithNoneSelected()
     {
-        indicator.enabled = selectedGolfBall != null;
-
-        if (selectedGolfBall != null)
+        if (Input.GetMouseButtonDown(0))
         {
-            Vector3[] line = { MousePosition, selectedGolfBall.transform.position };
-            indicator.SetPositions(line);
+            TransitionToSelected();
         }
     }
 
-    private void SelectGolfBall()
+    private void UpdateWithSelected()
     {
-        selectedGolfBall = BoltNetwork.Entities
+        hitDirection = SelectedGolfBallToMouseVector.normalized;
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            TransitionToNoneSelected();
+        }
+        else if (Input.GetMouseButtonDown(0))
+        {
+            TransitionToCharge();
+        }
+    }
+
+    private void UpdateWithCharge()
+    {
+        if (Input.GetMouseButtonDown(1))
+        {
+            TransitionToNoneSelected();
+        }
+        else if (Input.GetMouseButton(0))
+        {
+            hitCharge = Mathf.PingPong(Time.time * hitChargeSpeed, 1f);
+        }
+        else if (Input.GetMouseButtonUp(0))
+        {
+            HitSelectedGolfBall();
+            TransitionToNoneSelected();
+        }
+    }
+
+    private void TransitionToNoneSelected()
+    {
+        state = State.NoneSelected;
+        selectedGolfBall = null;
+        hitDirection = Vector2.zero;
+    }
+
+    private void TransitionToSelected()
+    {
+        state = State.Selected;
+        selectedGolfBall = FindNearestGolfBall();
+    }
+
+    private void TransitionToCharge()
+    {
+        state = State.Charge;
+        hitCharge = 0;
+    }
+
+    private void UpdateIndicator()
+    {
+        indicator.enabled = state == State.Selected || state == State.Charge;
+
+        if (state == State.Selected || state == State.Charge)
+        {
+            var indicatorLength = state == State.Charge ? hitCharge * maxIndicatorLength : maxIndicatorLength *.5f;
+            var pointA = (Vector2)selectedGolfBall.transform.position;
+            var pointB = pointA + hitDirection.normalized * indicatorLength;
+            indicator.SetPositions(new Vector3[] { pointA, pointB });
+        }
+    }
+
+    private BoltEntity FindNearestGolfBall()
+    {
+        return BoltNetwork.Entities
             .Where(i => i.StateIs<IGolfBallState>())
             .Where(i => i.HasControl)
             .OrderBy(i => Vector2.Distance(MousePosition, i.transform.position))
@@ -57,11 +126,12 @@ public class GolfBallSelectionSystem : MonoBehaviour
 
     private void HitSelectedGolfBall()
     {
-        var force = (MousePosition - (Vector2)selectedGolfBall.transform.position)
-            * GlobalSettings.SwingFroceScale;
+        var force = hitDirection.normalized * hitCharge;
         HitEvent.Post(GlobalTargets.OnlyServer, force, selectedGolfBall.NetworkId);
-        selectedGolfBall = null;
     }
 
     private Vector2 MousePosition => cam.ScreenToWorldPoint(Input.mousePosition);
+
+    private Vector2 SelectedGolfBallToMouseVector
+        => MousePosition - (Vector2)selectedGolfBall.transform.position;
 }

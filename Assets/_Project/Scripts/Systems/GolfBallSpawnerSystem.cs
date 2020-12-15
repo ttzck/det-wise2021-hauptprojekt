@@ -4,12 +4,20 @@ using System.Linq;
 
 public class GolfBallSpawnerSystem : GlobalEventListener
 {
-    private const int V = 5;
-    float TimeStamp = 0 ;
+    private float collectableTimeStamp = 0;
 
     private void Start()
     {
         if (BoltNetwork.IsServer) SpawnGolfBalls();
+        else enabled = false;
+    }
+
+    private void Update()
+    {
+        if (BoltNetwork.Time > collectableTimeStamp + GlobalSettings.CollectableSpawnCooldown)
+        {
+            SpawnCollectable();
+        }
     }
 
     private void SpawnGolfBalls()
@@ -27,25 +35,7 @@ public class GolfBallSpawnerSystem : GlobalEventListener
     {
         for (int j = 0; j < GlobalSettings.NumberOfGolfBallsPerTeam; j++)
         {
-            SpawnGolfBall(client, color, GetRandomPosition(), teamId);
-        }
-    }
-
-    private  void SpawnCollecteble()
-    {
-        for (int i = 0; i < GlobalSettings.NumberOfCollectable; i++)
-        {
-            BoltNetwork.Instantiate(BoltPrefabs.Star, GetRandomPosition(), Quaternion.identity);
-           
-        }
-        TimeStamp = BoltNetwork.Time;
-    }
-
-    private void Update()
-    {
-        if (BoltNetwork.Time > TimeStamp + V)
-        {
-            SpawnCollecteble();
+            SpawnGolfBall(client, color, GameUtils.RandomPosition, teamId);
         }
     }
 
@@ -62,8 +52,12 @@ public class GolfBallSpawnerSystem : GlobalEventListener
         else golfBall.AssignControl(client);
     }
 
-    private Vector2 GetRandomPosition()
+    private void SpawnCollectable()
     {
-        return Random.insideUnitCircle * 3;
+        for (int i = 0; i < GlobalSettings.NumberOfCollectablesPerSpawnRound; i++)
+        {
+            BoltNetwork.Instantiate(BoltPrefabs.Star, GameUtils.RandomPosition, Quaternion.identity);
+        }
+        collectableTimeStamp = BoltNetwork.Time;
     }
 }
