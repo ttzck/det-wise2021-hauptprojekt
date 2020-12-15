@@ -309,10 +309,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0bd1ff77e9c16429c4d952b923959c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectionIndicatorPrefab: {fileID: 2666319545043060448, guid: cd4a8721fff8c8d43aa6246283099d5f,
+  selectionIndicatorPrefab: {fileID: -8461184950454554589, guid: cd4a8721fff8c8d43aa6246283099d5f,
     type: 3}
   hitChargeSpeed: 1
-  maxIndicatorLength: 3
 --- !u!114 &517388973
 MonoBehaviour:
   m_ObjectHideFlags: 0

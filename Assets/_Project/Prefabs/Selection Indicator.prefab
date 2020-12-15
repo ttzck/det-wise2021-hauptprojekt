@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8813421761759138976}
   - component: {fileID: 2666319545043060448}
+  - component: {fileID: -8461184950454554589}
   m_Layer: 0
   m_Name: Selection Indicator
   m_TagString: Untagged
@@ -128,3 +129,17 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!114 &-8461184950454554589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7226734171982870017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31e34f8b47e2f2d4b886f922f1894af6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxLength: 3
+  lengthWhenNotCharging: 0.5
