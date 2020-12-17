@@ -278,6 +278,7 @@ GameObject:
   - component: {fileID: 517388975}
   - component: {fileID: 517388976}
   - component: {fileID: 517388977}
+  - component: {fileID: 517388978}
   m_Layer: 0
   m_Name: Systems
   m_TagString: Untagged
@@ -395,6 +396,19 @@ MonoBehaviour:
   collectablesLayerMask:
     serializedVersion: 2
     m_Bits: 1024
+--- !u!114 &517388978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 517388970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30f6c29969b676843a458a872b66ac51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown: 5
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

@@ -88,10 +88,9 @@ public class GolfBallSelectionSystem : MonoBehaviour
     private BoltEntity FindNearestGolfBall()
     {
         return BoltNetwork.Entities
-            .Where(i => i.StateIs<IGolfBallState>())
             .Where(i => i.HasControl)
             .OrderBy(i => Vector2.Distance(MousePosition, i.transform.position))
-            .First();
+            .FirstOrDefault();
     }
 
     private void HitSelectedGolfBall()

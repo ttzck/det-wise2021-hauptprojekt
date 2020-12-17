@@ -1,29 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Bolt;
 
-public class ScoreIndicator : MonoBehaviour
+public class ScoreIndicator : EntityBehaviour<IGolfBallState>
 {
     [SerializeField] private GameObject scoreIndicatorPrefab;
     [SerializeField] private float indicatorDistance;
     [SerializeField] private float rotationSpeed;
 
     private List<GameObject> indicators = new List<GameObject>();
-    private IGolfBallState golfBallState;
-
-    private void Start()
-    {
-        golfBallState = GetComponent<BoltEntity>().GetState<IGolfBallState>();    
-    }
 
     private void Update()
     {
-        while (indicators.Count < golfBallState.Score)
+        while (indicators.Count < state.Score)
         {
             indicators.Add(Instantiate(scoreIndicatorPrefab, transform));
         }
 
-        while (indicators.Count > golfBallState.Score)
+        while (indicators.Count > state.Score)
         {
             Destroy(indicators[0]);
             indicators.RemoveAt(0);

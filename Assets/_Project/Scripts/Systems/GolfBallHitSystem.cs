@@ -9,8 +9,12 @@ public class GolfBallHitSystem : GlobalEventListener
 
     public override void OnEvent(HitEvent hitEvent)
     {
-        BoltNetwork.FindEntity(hitEvent.Id)
-            .GetComponent<Rigidbody2D>()
-            .AddForce(hitEvent.Force * forceScale);
+        var entity = BoltNetwork.FindEntity(hitEvent.Id);
+        var rb = entity.GetComponent<Rigidbody2D>();
+        var state = entity.GetState<IGolfBallState>();
+        if (state.ReadyToMove)
+        {
+            rb.AddForce(hitEvent.Force * forceScale);
+        }
     }
 }

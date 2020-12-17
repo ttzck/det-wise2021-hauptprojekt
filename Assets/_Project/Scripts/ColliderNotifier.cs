@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-[RequireComponent(typeof(Collider2D))]
 public class ColliderNotifier : MonoBehaviour
 {
     public static event Action<GameObject, GameObject> CollisionEntered;
