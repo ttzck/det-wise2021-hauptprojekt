@@ -2,7 +2,7 @@
 using Bolt;
 using UnityEngine.UI;
 
-public class CooldownIndicator : EntityBehaviour<IGolfBallState>
+public class GolfBallCooldownIndicator : EntityBehaviour<IGolfBallState>
 {
     [SerializeField] private GameObject cooldownIndicatorPrefab;
 
@@ -12,6 +12,7 @@ public class CooldownIndicator : EntityBehaviour<IGolfBallState>
     {
         indicator = Instantiate(cooldownIndicatorPrefab, transform)
             .GetComponentInChildren<Image>();
+        state.AddCallback(nameof(state.Color), () => indicator.color = state.Color);
     }
 
     private void Update() =>
