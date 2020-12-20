@@ -11,12 +11,12 @@ public class SoundEffectsSystem : GlobalEventListener
     private void Start()
     {
         if (BoltNetwork.IsServer)
-            ColliderNotifier.CollisionEntered += OnCollision;
+            CollisionEvent.Published += OnCollision;
     }
 
-    private void OnCollision(GameObject a, GameObject b)
+    private void OnCollision(CollisionArgs args)
     {
-        if (golfBallLayerMask.Contains(a.layer) && wallLayerMask.Contains(b.layer))
+        if (golfBallLayerMask.Contains(args.A.layer) && wallLayerMask.Contains(args.B.layer))
         {
             SoundEffectEvent.Post(
                 GlobalTargets.Everyone, 

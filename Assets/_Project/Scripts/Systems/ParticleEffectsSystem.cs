@@ -1,4 +1,5 @@
 ﻿using Bolt;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,18 +14,18 @@ public class ParticleEffectsSystem : GlobalEventListener
     private void Start()
     {
         if (BoltNetwork.IsServer)
-            ColliderNotifier.CollisionEntered += OnCollision;
+            CollisionEvent.Published += OnCollision;
     }
 
-    private void OnCollision(GameObject a, GameObject b)
+    private void OnCollision(CollisionArgs args)
     {
-        if (golfBallLayerMask.Contains(a.layer) && wallLayerMask.Contains(b.layer))
+        if (golfBallLayerMask.Contains(args.A.layer) && wallLayerMask.Contains(args.B.layer))
         {
             ParticleEffectEvent.Post(
                 GlobalTargets.Everyone,
                 ReliabilityModes.Unreliable,
                 ParticleIndex: 0,
-                a.transform.position);
+                args.A.transform.position);
         }
     }
 

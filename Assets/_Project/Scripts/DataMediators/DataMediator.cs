@@ -8,8 +8,6 @@ public class DataMediator<T> : EntityEventListener<T> where T : IState
 
     public override void Attached()
     {
-        base.Attached();
-
         PropertyInfo[] properties = typeof(T).GetProperties();
         foreach (var property in properties)
         {
@@ -22,6 +20,20 @@ public class DataMediator<T> : EntityEventListener<T> where T : IState
 
     private void BroadcastChange(string propertyName)
         => BroadcastMessage(
-            methodName: $"On{propertyName}Changed", 
+            methodName: $"On{propertyName}Changed",
             options: SendMessageOptions.DontRequireReceiver);
+
+    private void OnCollisionEnter2D(Collision2D collision)
+        => CollisionEvent.Publish(new CollisionArgs
+        {
+            A = gameObject,
+            B = collision.gameObject
+        });
+
+    private void OnTriggerEnter2D(Collider2D other)
+        => CollisionEvent.Publish(new CollisionArgs
+        {
+            A = gameObject,
+            B = other.gameObject
+        });
 }

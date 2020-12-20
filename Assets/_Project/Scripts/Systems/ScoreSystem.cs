@@ -11,15 +11,15 @@ public class ScoreSystem : MonoBehaviour
     private void Start()
     {
         if (BoltNetwork.IsServer)
-            ColliderNotifier.TriggerEntered += OnTrigger;
+            CollisionEvent.Published += OnTrigger;
     }
 
-    private void OnTrigger(GameObject a, GameObject b)
+    private void OnTrigger(CollisionArgs args)
     {
-        if (golfBallLayerMask.Contains(a.layer) && collectablesLayerMask.Contains(b.layer))
+        if (golfBallLayerMask.Contains(args.A.layer) && collectablesLayerMask.Contains(args.B.layer))
         {
-            a.GetComponent<BoltEntity>().GetState<IGolfBallState>().Score++;
-            BoltNetwork.Destroy(b);
+            args.A.GetComponent<BoltEntity>().GetState<IGolfBallState>().Score++;
+            BoltNetwork.Destroy(args.B);
 
         }
     }
