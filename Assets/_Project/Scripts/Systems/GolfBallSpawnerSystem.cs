@@ -2,17 +2,12 @@
 using UnityEngine;
 using System.Linq;
 
-public class GolfBallSpawnerSystem : GlobalEventListener
+public class GolfBallSpawnerSystem : ServerSystem
 {
     private float collectableTimeStamp = 0;
 
-    private void Start()
-    {
-        if (BoltNetwork.IsServer) SpawnGolfBalls();
-        else enabled = false;
-    }
-
-    private void Update()
+    public override void SetUp(IGameState _) => SpawnGolfBalls();
+    public override void Execute(IGameState _)
     {
         if (BoltNetwork.Time > collectableTimeStamp + GlobalSettings.CollectableSpawnCooldown)
         {

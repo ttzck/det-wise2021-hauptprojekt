@@ -346,15 +346,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 517388974}
-  - component: {fileID: 517388973}
   - component: {fileID: 517388972}
   - component: {fileID: 517388971}
-  - component: {fileID: 517388975}
-  - component: {fileID: 517388976}
-  - component: {fileID: 517388977}
-  - component: {fileID: 517388978}
+  - component: {fileID: 517388973}
   m_Layer: 0
-  m_Name: Systems
+  m_Name: Game Logic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -369,9 +365,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 517388970}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e37bc587fadf0944fbf0b08252ca132a, type: 3}
+  m_Script: {fileID: -36112512, guid: 5b00bf8b25851d440940a40ec23344f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _sceneGuid: b5c0fcda-d41f-451f-a1b0-512d418ec21e
+  _serializerGuid: fc628629-b302-4e39-acf6-469c2427858e
+  _prefabId: 0
+  _updateRate: 1
+  _autoFreezeProxyFrames: 0
+  _clientPredicted: 1
+  _allowInstantiateOnClient: 1
+  _persistThroughSceneLoads: 0
+  _sceneObjectDestroyOnDetach: 1
+  _sceneObjectAutoAttach: 1
+  _alwaysProxy: 0
+  _detachOnDisable: 1
+  _allowFirstReplicationWhenFrozen: 0
+  _autoRemoveChildEntities: 0
+  _entityBehaviourQueryOption: 0
+  _entityPriorityCalculatorQueryOption: 1
+  _entityReplicationFilterQueryOption: 1
 --- !u!114 &517388972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -381,12 +394,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 517388970}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac0bd1ff77e9c16429c4d952b923959c, type: 3}
+  m_Script: {fileID: 11500000, guid: bb81d5ce19c81d84199ba911a5c7f75c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectionIndicatorPrefab: {fileID: -8461184950454554589, guid: cd4a8721fff8c8d43aa6246283099d5f,
-    type: 3}
-  hitChargeSpeed: 1
+  particleEffectSettings:
+  - TriggerName: HitBoltEvent
+    GameObject: {fileID: 6636682048262276418, guid: a661c3a2140c3464c88a5c7073191f63,
+      type: 3}
+  - TriggerName: CollisionMessage
+    GameObject: {fileID: 8956608674583115689, guid: 3e957102665c04943906c6c0428e0196,
+      type: 3}
 --- !u!114 &517388973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -396,10 +413,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 517388970}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ccf54ec337830644804dfdcdf54f2cf, type: 3}
+  m_Script: {fileID: 11500000, guid: 68513fe4714edd44d884a10328384297, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forceScale: 1000
+  attachTransform: 0
 --- !u!4 &517388974
 Transform:
   m_ObjectHideFlags: 0
@@ -414,75 +431,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &517388975
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 517388970}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ef2fbb214d886d4bb8c8ebdd99e9898, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  golfBallLayerMask:
-    serializedVersion: 2
-    m_Bits: 512
-  wallLayerMask:
-    serializedVersion: 2
-    m_Bits: 256
---- !u!114 &517388976
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 517388970}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09b2b523c64c94b47b13d47cd37d10f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  golfBallLayerMask:
-    serializedVersion: 2
-    m_Bits: 512
-  wallLayerMask:
-    serializedVersion: 2
-    m_Bits: 256
-  particleEffects:
-  - {fileID: 6636682048262276418, guid: a661c3a2140c3464c88a5c7073191f63, type: 3}
---- !u!114 &517388977
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 517388970}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db5d3630a9845fe46a4706c3bec3e062, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  golfBallLayerMask:
-    serializedVersion: 2
-    m_Bits: 512
-  collectablesLayerMask:
-    serializedVersion: 2
-    m_Bits: 1024
---- !u!114 &517388978
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 517388970}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30f6c29969b676843a458a872b66ac51, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cooldown: 5
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -565,72 +513,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &558367683
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 558367686}
-  - component: {fileID: 558367685}
-  - component: {fileID: 558367684}
-  m_Layer: 0
-  m_Name: EventSystem
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &558367684
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 558367683}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
---- !u!114 &558367685
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 558367683}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
-  m_sendNavigationEvents: 1
-  m_DragThreshold: 10
---- !u!4 &558367686
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 558367683}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &615555215
 GameObject:
@@ -851,7 +733,7 @@ MonoBehaviour:
   m_Script: {fileID: -36112512, guid: 5b00bf8b25851d440940a40ec23344f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sceneGuid: 
+  _sceneGuid: 55157f9d-06b7-4bc7-bfd6-f87a4cb0b220
   _serializerGuid: 603fa4e8-8657-4bb6-9c18-202d43a81682
   _prefabId: 0
   _updateRate: 1

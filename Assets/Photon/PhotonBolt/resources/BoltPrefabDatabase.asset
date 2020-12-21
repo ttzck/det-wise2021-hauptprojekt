@@ -15,6 +15,7 @@ MonoBehaviour:
   DatabaseMode: 0
   Prefabs:
   - {fileID: 0}
+  - {fileID: 8856428311279458867, guid: f5ea06bb6cb58fd4f9c2052e3c5bc2bb, type: 3}
   - {fileID: 3557064397976888274, guid: db29a3c953b32434291de59c676912a3, type: 3}
   - {fileID: 3819642158370751804, guid: 23120033d9bde489c9b3c318dc18d11d, type: 3}
   SearchPaths: []

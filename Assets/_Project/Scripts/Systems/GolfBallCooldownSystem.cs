@@ -2,14 +2,12 @@
 using System.Linq;
 using UnityEngine;
 
-public class GolfBallCooldownSystem : MonoBehaviour
+public class GolfBallCooldownSystem : ServerSystem
 {
-    [SerializeField] private float cooldown;
+    private const float cooldown = 3;
 
-    private void Update()
+    public override void Execute(IGameState _)
     {
-        if (!BoltNetwork.IsServer) return;
-
         var golfBalls = BoltNetwork.Entities
             .Where(i => i.StateIs<IGolfBallState>())
             .Select(i => i.GetState<IGolfBallState>());
@@ -22,10 +20,9 @@ public class GolfBallCooldownSystem : MonoBehaviour
         }
     }
 
-    private void UpdateReadyToMove(IGolfBallState golfBall)
-    {
-        golfBall.ReadyToMove = BoltNetwork.Time > golfBall.CooldownTimestamp + cooldown;
-    }
+    private void UpdateReadyToMove(IGolfBallState golfBall) 
+        => golfBall.ReadyToMove =
+            BoltNetwork.Time > golfBall.CooldownTimestamp + cooldown;
 
     private void UpdateCooldownTimestamp(IGolfBallState golfBall)
     {
@@ -39,8 +36,7 @@ public class GolfBallCooldownSystem : MonoBehaviour
         }
     }
 
-    private void UpdateCooldownRatio(IGolfBallState golfBall)
-    {
-        golfBall.CooldownRatio = 1 - Mathf.Clamp01((BoltNetwork.Time - golfBall.CooldownTimestamp) / cooldown);
-    }
+    private void UpdateCooldownRatio(IGolfBallState golfBall) 
+        => golfBall.CooldownRatio = 
+            1 - Mathf.Clamp01((BoltNetwork.Time - golfBall.CooldownTimestamp) / cooldown);
 }

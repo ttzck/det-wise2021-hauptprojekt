@@ -26,7 +26,17 @@ public class GolfBallDataMediator : DataMediator<IGolfBallState>
         spriteRenderer = GetComponent<SpriteRenderer>();
         cooldownIndicator = Instantiate(cooldownIndicatorPrefab, transform)
             .GetComponentInChildren<Image>();
+
+        if (BoltNetwork.IsServer) GameEventManager.Subscribe<HitBoltEvent>(OnHit);
     }
+
+    private void OnHit(object message)
+    {
+        var hit = message as HitBoltEvent;
+        if (state.ReadyToMove && hit.Id == entity.NetworkId)
+            rb.AddForce(hit.Force * GlobalSettings.ForceScale);
+    }
+
     private void Update()
     {
         state.Velocity = rb != null ? rb.velocity.magnitude : 0;
