@@ -401,9 +401,11 @@ MonoBehaviour:
   - TriggerName: HitBoltEvent
     GameObject: {fileID: 6636682048262276418, guid: a661c3a2140c3464c88a5c7073191f63,
       type: 3}
+    ID: 0
   - TriggerName: CollisionMessage
     GameObject: {fileID: 8956608674583115689, guid: 3e957102665c04943906c6c0428e0196,
       type: 3}
+    ID: 1
 --- !u!114 &517388973
 MonoBehaviour:
   m_ObjectHideFlags: 0

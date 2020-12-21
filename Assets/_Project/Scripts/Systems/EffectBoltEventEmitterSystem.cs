@@ -40,7 +40,7 @@ public class EffectBoltEventEmitterSystem : ServerSystem
         }
     }
 
-    private IEnumerable<Guid> FindEffectIDsFor<T>()
+    private IEnumerable<int> FindEffectIDsFor<T>()
     {
         var typeName = typeof(T).Name;
         return settings
@@ -48,7 +48,7 @@ public class EffectBoltEventEmitterSystem : ServerSystem
             .Select(x => x.ID);
     }
 
-    private void Post(Guid id, Vector2 position)
+    private void Post(int id, Vector2 position)
     {
         EffectBoltEvent.Post(
             GlobalTargets.Everyone,
@@ -63,5 +63,5 @@ public class EffectSetting
 {
     public string TriggerName;
     public GameObject GameObject;
-    public Guid ID = Guid.NewGuid();
+    public int ID;
 }
