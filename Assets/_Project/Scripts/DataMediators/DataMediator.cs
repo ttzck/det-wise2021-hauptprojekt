@@ -18,6 +18,8 @@ public class DataMediator<T> : EntityBehaviour<T> where T : IState
 
     public override void Attached()
     {
+        GameEventManager.Publish(new EntityAttachedMessage<T> { State = state });
+
         AddCallbacks();
 
         if (!BoltNetwork.IsServer)
@@ -25,6 +27,11 @@ public class DataMediator<T> : EntityBehaviour<T> where T : IState
             RemoveComponent<Rigidbody2D>();
             RemoveComponent<Collider2D>();
         }
+    }
+
+    public override void Detached()
+    {
+        GameEventManager.Publish(new EntityDetachedMessage<T> { State = state });
     }
 
     private void AddCallbacks()

@@ -4,16 +4,7 @@ using System.Linq;
 
 public class GolfBallSpawnerSystem : ServerSystem
 {
-    private float collectableTimeStamp = 0;
-
     public override void SetUp(IGameState _) => SpawnGolfBalls();
-    public override void Execute(IGameState _)
-    {
-        if (BoltNetwork.Time > collectableTimeStamp + GlobalSettings.CollectableSpawnCooldown)
-        {
-            SpawnCollectable();
-        }
-    }
 
     private void SpawnGolfBalls()
     {
@@ -45,14 +36,5 @@ public class GolfBallSpawnerSystem : ServerSystem
 
         if (client == null) golfBall.TakeControl();
         else golfBall.AssignControl(client);
-    }
-
-    private void SpawnCollectable()
-    {
-        for (int i = 0; i < GlobalSettings.NumberOfCollectablesPerSpawnRound; i++)
-        {
-            BoltNetwork.Instantiate(BoltPrefabs.Star, GameUtils.RandomPosition, Quaternion.identity);
-        }
-        collectableTimeStamp = BoltNetwork.Time;
     }
 }

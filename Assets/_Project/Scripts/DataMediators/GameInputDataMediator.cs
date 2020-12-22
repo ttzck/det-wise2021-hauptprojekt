@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Diagnostics.CodeAnalysis.SuppressMessage("CodeQuality", "IDE0051:Remove unused private members", Justification = "Using Unity Messages")]
-public class GameInputDataMediator : DataMediator<IGameInput>, Bolt.IEntityReplicationFilter
+public class GameInputDataMediator : DataMediator<IGameInput>
 {
     [SerializeField] private LineRenderer lineRendererPrefab;
     [SerializeField] private float maxLineLength;

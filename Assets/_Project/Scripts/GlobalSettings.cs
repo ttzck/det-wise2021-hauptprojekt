@@ -9,9 +9,7 @@ public static class GlobalSettings
 
     public static int NumberOfCollectablesPerSpawnRound = 3;
 
-    public static int CollectableSpawnCooldown = 10;
+    public static float CollectableSpawnCooldown = 5f;
 
     public static float ForceScale = 400f;
-
-    public static readonly Type[] MessageTypes = { typeof(HitBoltEvent), typeof(CollisionMessage), typeof(EffectBoltEvent) };
 }

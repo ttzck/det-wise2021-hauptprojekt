@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3819642158370751805}
   - component: {fileID: 3819642158370751807}
   - component: {fileID: -8335575455018460024}
+  - component: {fileID: -3563044006238759329}
   m_Layer: 10
   m_Name: Star
   m_TagString: Untagged
@@ -113,7 +114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sceneGuid: 
   _serializerGuid: 9f1f6201-21e4-47be-88de-0296a6fee428
-  _prefabId: 3
+  _prefabId: 5
   _updateRate: 1
   _autoFreezeProxyFrames: 0
   _clientPredicted: 1
@@ -128,3 +129,16 @@ MonoBehaviour:
   _entityBehaviourQueryOption: 0
   _entityPriorityCalculatorQueryOption: 1
   _entityReplicationFilterQueryOption: 1
+--- !u!114 &-3563044006238759329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3819642158370751804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3e95f8c82bd71647925570a3fff30b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attachTransform: 0

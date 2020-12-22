@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 public static class GameEventManager
 {
@@ -19,14 +20,20 @@ public static class GameEventManager
             subscribtions.Add(type, action);
         }
     }
-    
+
     public static void Publish<T>(T message)
     {
-        var type = typeof(T);
+        var messageType = typeof(T);
+        var subsCopy = subscribtions
+            .Select(kvp => (kvp.Key, kvp.Value))
+            .ToArray();
 
-        if (subscribtions.ContainsKey(type))
+        foreach (var (type, action) in subsCopy)
         {
-            subscribtions[type](message);
+            if (type.IsAssignableFrom(messageType))
+            {
+                action(message);
+            }
         }
     }
 

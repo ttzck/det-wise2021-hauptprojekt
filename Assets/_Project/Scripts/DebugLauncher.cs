@@ -4,12 +4,15 @@ using UnityEngine;
 using Bolt;
 using Bolt.Matchmaking;
 using System;
+using UnityEngine.SceneManagement;
 
 public class DebugLauncher : GlobalEventListener
 {
     private void Start()
     {
-        if(!BoltNetwork.IsRunning)
+        GameEventManager.Subscribe<object>(AnnounceEvent);
+
+        if (!BoltNetwork.IsRunning)
             BoltLauncher.StartServer();
     }
 
@@ -19,5 +22,10 @@ public class DebugLauncher : GlobalEventListener
             sessionID: Guid.NewGuid().ToString(),
             sceneToLoad: "Main"
         );
+    }
+
+    private void AnnounceEvent(object message)
+    {
+        BoltLog.Info($"GameEvent: {message.GetType()}");
     }
 }

@@ -3,16 +3,16 @@ using Bolt;
 using System.Collections.Generic;
 using System.Collections;
 
-public class GameLogic : MonoBehaviour
+public class GameLogic : DataMediator<IGameState>
 {
     [SerializeField] private List<EffectSetting> particleEffectSettings;
 
     private readonly List<ISystem> activeSystems = new List<ISystem>();
 
-    private IGameState gameState;
-
-    public void Start()
+    public override void Attached()
     {
+        base.Attached();
+
         GameEventManager.Subscribe<EffectMessage>(SpawnEffect);
         GameEventManager.Subscribe<SceneLoadedMessage>(Initialise);
     }
@@ -26,11 +26,9 @@ public class GameLogic : MonoBehaviour
         new EffectBoltEventEmitterSystem(particleEffectSettings).Initialise(activeSystems);
         new EffectBoltEventReceiverSystem(particleEffectSettings).Initialise(activeSystems);
 
-        gameState = BoltNetwork.Instantiate(BoltPrefabs.Game_State).GetState<IGameState>();
-
         foreach (var system in activeSystems)
         {
-            system.SetUp(gameState);
+            system.SetUp(state);
         }
     }
 
@@ -38,13 +36,12 @@ public class GameLogic : MonoBehaviour
     {
         foreach (var system in activeSystems)
         {
-            system.Execute(gameState);
+            system.Execute(state);
         }
     }
 
-    public void OnDestroy()
+    public override void Detached()
     {
-        BoltLog.Info("Unsubscribing all Events");
         GameEventManager.UnsubscribeAll();
     }
 
