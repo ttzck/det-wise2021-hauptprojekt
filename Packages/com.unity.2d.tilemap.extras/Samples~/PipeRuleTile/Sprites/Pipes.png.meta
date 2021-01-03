@@ -1,22 +1,25 @@
 fileFormatVersion: 2
-guid: 7a631e75c6b946c4387737e9779b55d4
+guid: 1ebc1aff258f04220b2ce4e1240442fa
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7223950226953391895
-    second: Tiles_0
+      213: -3350344413380223241
+    second: Pipes_00
   - first:
-      213: -8377130690987618698
-    second: Tiles_1
+      213: -982495737459262880
+    second: Pipes_01
   - first:
-      213: -4684333735789482159
-    second: Tiles_2
+      213: 6001099972171207910
+    second: Pipes_02
   - first:
-      213: -5062486230716756072
-    second: Tiles_3
+      213: 4376287821753702255
+    second: Pipes_03
   - first:
-      213: 4099902767569298868
-    second: Tiles_4
+      213: -8656142213013974842
+    second: Pipes_04
+  - first:
+      213: 8455133356877028895
+    second: Pipes_05
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -38,6 +41,7 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -46,12 +50,12 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: -1
     aniso: -1
     mipBias: -100
     wrapU: 1
     wrapV: 1
-    wrapW: 1
+    wrapW: -1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -60,7 +64,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 80
+  spritePixelsToUnits: 128
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -72,6 +76,7 @@ TextureImporter:
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 0
   platformSettings:
   - serializedVersion: 3
@@ -79,7 +84,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 2
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -91,7 +96,43 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -102,13 +143,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Tiles_0
+      name: Pipes_00
       rect:
         serializedVersion: 2
-        x: 10
-        y: 60
-        width: 10
-        height: 10
+        x: 8
+        y: 152
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -116,20 +157,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 71fc8a01570a04460800000000000000
-      internalID: 7223950226953391895
+      spriteID: 7fed145c18f2181d0800000000000000
+      internalID: -3350344413380223241
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tiles_1
+      name: Pipes_01
       rect:
         serializedVersion: 2
-        x: 30
-        y: 60
-        width: 10
-        height: 10
+        x: 152
+        y: 152
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +178,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 67e09ae35047ebb80800000000000000
-      internalID: -8377130690987618698
+      spriteID: 06ab76f05597d52f0800000000000000
+      internalID: -982495737459262880
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tiles_2
+      name: Pipes_02
       rect:
         serializedVersion: 2
-        x: 40
-        y: 60
-        width: 10
-        height: 10
+        x: 296
+        y: 152
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,20 +199,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 15fa3e43947edfeb0800000000000000
-      internalID: -4684333735789482159
+      spriteID: 6e41fd621a0384350800000000000000
+      internalID: 6001099972171207910
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tiles_3
+      name: Pipes_03
       rect:
         serializedVersion: 2
-        x: 30
-        y: 50
-        width: 10
-        height: 10
+        x: 8
+        y: 8
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,20 +220,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 89f42d9689f6eb9b0800000000000000
-      internalID: -5062486230716756072
+      spriteID: f675f7a5692bbbc30800000000000000
+      internalID: 4376287821753702255
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tiles_4
+      name: Pipes_04
       rect:
         serializedVersion: 2
-        x: 40
-        y: 50
-        width: 10
-        height: 10
+        x: 152
+        y: 8
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -200,8 +241,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4b5eb9a48d7c5e830800000000000000
-      internalID: 4099902767569298868
+      spriteID: 6c0d90cf4843fd780800000000000000
+      internalID: -8656142213013974842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pipes_05
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 8
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1e1639adfaa65570800000000000000
+      internalID: 8455133356877028895
       vertices: []
       indices: 
       edges: []
@@ -209,7 +271,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: a10240c83e0c94dbaa728f513a672cd2
     internalID: 0
     vertices: []
     indices: 
@@ -218,7 +280,7 @@ TextureImporter:
     secondaryTextures: []
   spritePackingTag: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
+  pSDShowRemoveMatteOption: 1
   userData: 
   assetBundleName: 
   assetBundleVariant: 
