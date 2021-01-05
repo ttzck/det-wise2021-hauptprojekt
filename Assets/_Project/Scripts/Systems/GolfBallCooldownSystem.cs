@@ -8,9 +8,8 @@ public class GolfBallCooldownSystem : ServerSystem
 
     public override void Execute(IGameState _)
     {
-        var golfBalls = BoltNetwork.Entities
-            .Where(i => i.StateIs<IGolfBallState>())
-            .Select(i => i.GetState<IGolfBallState>());
+        var golfBalls = SystemUtils
+            .FindAll<IGolfBallState>();
 
         foreach (var golfBall in golfBalls)
         {

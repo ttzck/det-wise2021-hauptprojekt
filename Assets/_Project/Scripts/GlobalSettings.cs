@@ -12,4 +12,6 @@ public static class GlobalSettings
     public static float CollectableSpawnCooldown = 5f;
 
     public static float ForceScale = 400f;
+
+    public static int CollectablesWinCondition = 3;
 }

@@ -42,17 +42,29 @@ public class CollectablesSystem : ServerSystem
         spot.CooldownTimestamp = Time.time;
     }
 
-    public override void Execute(IGameState _)
+    public override void Execute(IGameState gameState)
     {
         UpdateSpots();
 
-        var queryScore = SystemUtils
+        CheckWinCondition(gameState);
+    }
+
+    private void CheckWinCondition(IGameState gameState)
+    {
+        var winner = SystemUtils
             .FindAll<IGolfBallState>()
-            .GroupBy(i => i.TeamId, j => j.Score, (teamID, Scores) => new
+            .GroupBy(i => i.TeamId, j => j.Score, (teamId, Scores) => new
             {
-                Teamid = teamID,
+                TeamId = teamId,
                 Score = Scores.Sum()
-            });
+            })
+            .FirstOrDefault(i => i.Score >= GlobalSettings.CollectablesWinCondition);
+
+        if (winner != null)
+        {
+            gameState.IsOver = true;
+            gameState.WinnerId = winner.TeamId;
+        }
     }
 
     private static void UpdateSpots()

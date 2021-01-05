@@ -4,7 +4,11 @@ using System.Linq;
 
 public class GolfBallSpawnerSystem : ServerSystem
 {
-    public override void SetUp(IGameState _) => SpawnGolfBalls();
+    public override void SetUp(IGameState gameState)
+    {
+        gameState.NumberOfTeams = BoltNetwork.Clients.Count();
+        SpawnGolfBalls();
+    }
 
     private void SpawnGolfBalls()
     {

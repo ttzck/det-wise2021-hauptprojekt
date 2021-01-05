@@ -74,3 +74,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attachTransform: 0
+  gameOverIndicator: {fileID: 7904215482105070594, guid: e632142e8ecdfaf49815884d994cc05b,
+    type: 3}
