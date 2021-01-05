@@ -25,7 +25,8 @@ public class GameLogic : MonoBehaviour
         new CollectablesSystem().Initialise(activeSystems);
         new EffectBoltEventEmitterSystem(particleEffectSettings).Initialise(activeSystems);
         new EffectBoltEventReceiverSystem(particleEffectSettings).Initialise(activeSystems);
-
+        new ControlZoneSystem().Initialise(activeSystems);
+        
         gameState = BoltNetwork.Instantiate(BoltPrefabs.Game_State).GetState<IGameState>();
 
         foreach (var system in activeSystems)

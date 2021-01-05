@@ -16,29 +16,51 @@ public class GolfBallSpawnerSystem : ServerSystem
         for (int i = 0; i < clients.Length; i++)
         {
             var color = Color.HSVToRGB((1f / clients.Length) * i, 1, 1);
-            SpawnTeam(clients[i], color, i + 1);
+            SpawnTeam(new Team
+            {
+                client = clients[i],
+                color = GameUtils.GetTeamColor(i, clients.Length),
+                teamId = i+1
+             }) ;
         }
-        SpawnTeam(client: null, Color.black, 0);
+        SpawnTeam(new Team
+        {
+            client = null,
+            color = Color.magenta,
+            teamId = clients.Length + 1
+        });
     }
 
-    private void SpawnTeam(BoltConnection client, Color color, int teamId)
+    private void SpawnTeam(Team team)
     {
         for (int j = 0; j < GlobalSettings.NumberOfGolfBallsPerTeam; j++)
         {
-            SpawnGolfBall(client, color, GameUtils.RandomPosition, teamId);
+            SpawnGolfBall(team, j == 0);
         }
     }
 
-    private void SpawnGolfBall(BoltConnection client, Color color, Vector2 position, int teamId)
+    private void SpawnGolfBall(Team team, bool isKing)
     {
         var golfBall = BoltNetwork.Instantiate(BoltPrefabs.Networked_Golf_Ball);
-        golfBall.transform.position = position;
+        golfBall.transform.position = GameUtils.RandomPosition;
 
         var state = golfBall.GetState<IGolfBallState>();
-        state.Color = color;
-        state.TeamId = teamId;
+        state.Color = team.color;
+        state.TeamId = team.teamId;
+        state.IsKing = isKing;
 
-        if (client == null) golfBall.TakeControl();
-        else golfBall.AssignControl(client);
+        if (team.client == null) golfBall.TakeControl();
+        else golfBall.AssignControl(team.client);
+    }
+
+    private class Team
+    {
+        public BoltConnection client;
+        public Color color;
+        public int teamId;
+        
+
     }
 }
+
+

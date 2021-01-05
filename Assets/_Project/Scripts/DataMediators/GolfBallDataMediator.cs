@@ -12,6 +12,7 @@ public class GolfBallDataMediator : DataMediator<IGolfBallState>
     [SerializeField] private GameObject scoreIndicatorPrefab;
     [SerializeField] private float scoreIndicatorDistance;
     [SerializeField] private float scoreIndicatorRotationSpeed;
+    [SerializeField] private GameObject kingIndicator;
 
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
@@ -75,5 +76,9 @@ public class GolfBallDataMediator : DataMediator<IGolfBallState>
             Destroy(scoreIndicators[0]);
             scoreIndicators.RemoveAt(0);
         }
+    }
+    private void OnIsKingChanged()
+    {
+        kingIndicator.SetActive(state.IsKing);  
     }
 }
