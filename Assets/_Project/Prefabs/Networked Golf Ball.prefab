@@ -171,7 +171,7 @@ MonoBehaviour:
     type: 3}
   scoreIndicatorDistance: 0.2
   scoreIndicatorRotationSpeed: 50
-  kingIndicator: {fileID: 0}
+  kingIndicator: {fileID: 4374453426410039325}
 --- !u!1 &4374453426410039325
 GameObject:
   m_ObjectHideFlags: 0
@@ -241,7 +241,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 8d0de0a37d682f84db8a0032ecd30b14, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

@@ -26,7 +26,4 @@ public class ControlZoneSystem : ServerSystem
             game.WinnerId = zones.First().TeamId;
         }
     }
-    
-
-
 }

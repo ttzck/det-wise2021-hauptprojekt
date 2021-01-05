@@ -885,7 +885,7 @@
           "Name": "IsOver",
           "Enabled": true,
           "Expanded": true,
-          "ReplicationMode": 3,
+          "ReplicationMode": 1,
           "Priority": 1,
           "PropertyType": {
             "$type": "Bolt.Compiler.PropertyTypeBool, bolt.compiler"
@@ -902,7 +902,7 @@
           "Name": "WinnerId",
           "Enabled": true,
           "Expanded": true,
-          "ReplicationMode": 3,
+          "ReplicationMode": 1,
           "Priority": 1,
           "PropertyType": {
             "$type": "Bolt.Compiler.PropertyTypeInteger, bolt.compiler",

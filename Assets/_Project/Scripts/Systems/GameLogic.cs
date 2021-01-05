@@ -26,6 +26,7 @@ public class GameLogic : MonoBehaviour
         new EffectBoltEventEmitterSystem(particleEffectSettings).Initialise(activeSystems);
         new EffectBoltEventReceiverSystem(particleEffectSettings).Initialise(activeSystems);
         new ControlZoneSystem().Initialise(activeSystems);
+        new KingSystem().Initialise(activeSystems);
         
         gameState = BoltNetwork.Instantiate(BoltPrefabs.Game_State).GetState<IGameState>();
 
