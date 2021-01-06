@@ -24,6 +24,17 @@ public class DebugLauncher : GlobalEventListener
         );
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            foreach(var ball in SystemUtils.FindAll<IGolfBallState>())
+            {
+                ball.IsKing = false;
+            }
+        }
+    }
+
     private void AnnounceEvent(object message)
     {
         BoltLog.Info($"GameEvent: {message.GetType()}");

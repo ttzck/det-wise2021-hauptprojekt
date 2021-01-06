@@ -171,6 +171,9 @@ MonoBehaviour:
     type: 3}
   scoreIndicatorDistance: 0.2
   scoreIndicatorRotationSpeed: 50
+  preMoveIndicatorPrefab: {fileID: 9219807509113929377, guid: e5f3ef3f9b3a24f439444ea27467a90a,
+    type: 3}
+  maxPreMoveIndicatorLength: 3
   kingIndicator: {fileID: 4374453426410039325}
 --- !u!1 &4374453426410039325
 GameObject:

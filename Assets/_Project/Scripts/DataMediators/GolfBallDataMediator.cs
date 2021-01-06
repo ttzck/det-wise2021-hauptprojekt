@@ -8,16 +8,27 @@ using System;
 [System.Diagnostics.CodeAnalysis.SuppressMessage("CodeQuality", "IDE0051:Remove unused private members", Justification = "Using Unity Messages")]
 public class GolfBallDataMediator : DataMediator<IGolfBallState>
 {
+    [Header("Cooldown Indicator")]
     [SerializeField] private GameObject cooldownIndicatorPrefab;
+
+    [Header("Score Indicator")]
     [SerializeField] private GameObject scoreIndicatorPrefab;
     [SerializeField] private float scoreIndicatorDistance;
     [SerializeField] private float scoreIndicatorRotationSpeed;
+
+    [Header("PreMove Indicator")]
+    [SerializeField] private LineRenderer preMoveIndicatorPrefab;
+    [SerializeField] private float maxPreMoveIndicatorLength;
+
+    [Header("King Indicator")]
     [SerializeField] private GameObject kingIndicator;
+
 
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
     private Image cooldownIndicator;
     private List<GameObject> scoreIndicators = new List<GameObject>();
+    private LineRenderer preMoveIndicator;
 
     public override void Attached()
     {
@@ -27,24 +38,36 @@ public class GolfBallDataMediator : DataMediator<IGolfBallState>
         spriteRenderer = GetComponent<SpriteRenderer>();
         cooldownIndicator = Instantiate(cooldownIndicatorPrefab, transform)
             .GetComponentInChildren<Image>();
+        preMoveIndicator = Instantiate(preMoveIndicatorPrefab);
+        preMoveIndicator.enabled = false;
 
-        if (BoltNetwork.IsServer) GameEventManager.Subscribe<HitBoltEvent>(OnHit);
+        if (BoltNetwork.IsServer) 
+            GameEventManager.Subscribe<HitBoltEvent>(m => OnHit(m as HitBoltEvent));
     }
 
-    private void OnHit(object message)
+    private void OnHit(HitBoltEvent hit)
     {
-        var hit = message as HitBoltEvent;
-        if (state.ReadyToMove && hit.Id == entity.NetworkId)
-            rb.AddForce(hit.Force * GlobalSettings.ForceScale);
+        if (hit.Id == entity.NetworkId)
+            if (state.ReadyToMove)
+                rb.AddForce(hit.Force * GlobalSettings.ForceScale);
+            else
+                state.PreMove = hit.Force;
     }
 
     private void Update()
     {
+        if (BoltNetwork.IsServer && state.ReadyToMove && state.PreMove != Vector3.zero)
+        {
+            rb.AddForce(state.PreMove * GlobalSettings.ForceScale);
+            state.PreMove = Vector3.zero;
+        }
+
         state.Velocity = rb != null ? rb.velocity.magnitude : 0;
-        AnimateScoreIndicators();
+        UpdateScoreIndicators();
+        UpdatePreMoveIndicator();
     }
 
-    private void AnimateScoreIndicators()
+    private void UpdateScoreIndicators()
     {
         for (int i = 0; i < scoreIndicators.Count; i++)
         {
@@ -77,8 +100,22 @@ public class GolfBallDataMediator : DataMediator<IGolfBallState>
             scoreIndicators.RemoveAt(0);
         }
     }
+
     private void OnIsKingChanged()
     {
         kingIndicator.SetActive(state.IsKing);  
+    }
+
+    private void UpdatePreMoveIndicator()
+    {
+        if (!entity.HasControl) return;
+
+        preMoveIndicator.enabled = state.PreMove != Vector3.zero;
+
+        preMoveIndicator.SetPositions(new Vector3[] 
+        { 
+            transform.position, 
+            transform.position + state.PreMove * maxPreMoveIndicatorLength
+        });
     }
 }

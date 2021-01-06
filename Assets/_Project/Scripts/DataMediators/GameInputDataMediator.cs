@@ -19,8 +19,6 @@ public class GameInputDataMediator : DataMediator<IGameInput>
         lineRenderer.enabled = false;
     }
 
-    public bool AllowReplicationTo(BoltConnection connection) => false;
-
     private void OnSelectedGolfBallChanged()
     {
         selectedGolfBall = BoltNetwork.FindEntity(state.SelectedGolfBall);
