@@ -15,7 +15,7 @@ public class CollectablesSystem : ServerSystem
 
             collectableState.Enabled = false;
             spotState.Enabled = true;
-            spotState.CooldownTimestamp = Time.time;
+            spotState.CooldownTimestamp = Time.time - Random.Range(0f, GlobalSettings.CollectableSpawnCooldown);
             spotState.Collectable = collectable.NetworkId;
             collectableState.CollectableSpot = spot.NetworkId;
         }
