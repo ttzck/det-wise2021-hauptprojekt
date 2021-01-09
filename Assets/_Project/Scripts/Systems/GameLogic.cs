@@ -19,7 +19,6 @@ public class GameLogic : MonoBehaviour
 
     public void Initialise(object message)
     {
-        new GolfBallCooldownSystem().Initialise(activeSystems);
         new GolfBallSelectionSystem().Initialise(activeSystems);
         new GolfBallSpawnerSystem().Initialise(activeSystems);
         new CollectablesSystem().Initialise(activeSystems);
@@ -27,6 +26,7 @@ public class GameLogic : MonoBehaviour
         new EffectBoltEventReceiverSystem(particleEffectSettings).Initialise(activeSystems);
         new ControlZoneSystem().Initialise(activeSystems);
         new KingSystem().Initialise(activeSystems);
+        new GolfBallCooldownSystem().Initialise(activeSystems);
         
         gameState = BoltNetwork.Instantiate(BoltPrefabs.Game_State).GetState<IGameState>();
 

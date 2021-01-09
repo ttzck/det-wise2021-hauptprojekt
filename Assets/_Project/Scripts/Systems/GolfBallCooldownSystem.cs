@@ -4,7 +4,18 @@ using UnityEngine;
 
 public class GolfBallCooldownSystem : ServerSystem
 {
-    private const float cooldown = 3;
+    public override void SetUp(IGameState gameState)
+    {
+        var golfBalls = SystemUtils
+           .FindAll<IGolfBallState>();
+
+        foreach (var golfBall in golfBalls)
+        {
+            golfBall.CooldownTimestamp = 
+                Time.time - 
+                Random.Range(0, GlobalSettings.GolfBallCooldown * .5f);
+        }
+    }
 
     public override void Execute(IGameState _)
     {
@@ -21,7 +32,7 @@ public class GolfBallCooldownSystem : ServerSystem
 
     private void UpdateReadyToMove(IGolfBallState golfBall) 
         => golfBall.ReadyToMove =
-            BoltNetwork.Time > golfBall.CooldownTimestamp + cooldown;
+            BoltNetwork.Time > golfBall.CooldownTimestamp + GlobalSettings.GolfBallCooldown;
 
     private void UpdateCooldownTimestamp(IGolfBallState golfBall)
     {
@@ -37,5 +48,6 @@ public class GolfBallCooldownSystem : ServerSystem
 
     private void UpdateCooldownRatio(IGolfBallState golfBall) 
         => golfBall.CooldownRatio = 
-            1 - Mathf.Clamp01((BoltNetwork.Time - golfBall.CooldownTimestamp) / cooldown);
+            1 - Mathf.Clamp01((BoltNetwork.Time - golfBall.CooldownTimestamp) 
+                / GlobalSettings.GolfBallCooldown);
 }

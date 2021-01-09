@@ -7,9 +7,11 @@ public static class GlobalSettings
 
     public static int NumberOfGolfBallsPerTeam = 3;
 
-    public static float CollectableSpawnCooldown = 30f;
+    public static float CollectableSpawnCooldown = 90f;
 
     public static float ForceScale = 200f;
 
     public static int CollectablesWinCondition = 5;
+
+    public static float GolfBallCooldown = 15f;
 }
