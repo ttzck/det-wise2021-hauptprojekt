@@ -1,10 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using Bolt;
+﻿using Bolt;
 using Bolt.Matchmaking;
 using System;
-using UnityEngine.SceneManagement;
+using UnityEngine;
 
 public class DebugLauncher : GlobalEventListener
 {
@@ -28,7 +25,7 @@ public class DebugLauncher : GlobalEventListener
     {
         if (Input.GetKeyDown(KeyCode.X))
         {
-            foreach(var ball in SystemUtils.FindAll<IGolfBallState>())
+            foreach (var ball in SystemUtils.FindAll<IGolfBallState>())
             {
                 ball.IsKing = false;
             }

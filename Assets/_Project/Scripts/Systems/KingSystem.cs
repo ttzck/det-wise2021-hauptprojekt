@@ -1,6 +1,4 @@
-﻿using Bolt;
-using System.Linq;
-using UnityEngine;
+﻿using System.Linq;
 
 public class KingSystem : ServerSystem
 {

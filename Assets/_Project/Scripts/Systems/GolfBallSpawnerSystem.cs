@@ -1,6 +1,5 @@
-﻿using Bolt;
+﻿using System.Linq;
 using UnityEngine;
-using System.Linq;
 
 public class GolfBallSpawnerSystem : ServerSystem
 {
@@ -20,8 +19,8 @@ public class GolfBallSpawnerSystem : ServerSystem
             {
                 client = clients[i],
                 color = GameUtils.GetTeamColor(i, clients.Length),
-                teamId = i+1
-             }) ;
+                teamId = i + 1
+            });
         }
         SpawnTeam(new Team
         {
@@ -58,7 +57,7 @@ public class GolfBallSpawnerSystem : ServerSystem
         public BoltConnection client;
         public Color color;
         public int teamId;
-        
+
 
     }
 }

@@ -23,5 +23,5 @@ public static class GameUtils
     }
 
     public static Color GetTeamColor(int teamId, int numberOfTeams)
-        => Color.HSVToRGB((1f /numberOfTeams) * teamId, 1, 1);
+        => Color.HSVToRGB((1f / numberOfTeams) * teamId, 1, 1);
 }

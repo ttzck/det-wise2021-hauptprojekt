@@ -1,9 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Bolt;
-using System;
 
 [System.Diagnostics.CodeAnalysis.SuppressMessage("CodeQuality", "IDE0051:Remove unused private members", Justification = "Using Unity Messages")]
 public class GolfBallDataMediator : DataMediator<IGolfBallState>
@@ -41,7 +38,7 @@ public class GolfBallDataMediator : DataMediator<IGolfBallState>
         preMoveIndicator = Instantiate(preMoveIndicatorPrefab);
         preMoveIndicator.enabled = false;
 
-        if (BoltNetwork.IsServer) 
+        if (BoltNetwork.IsServer)
             GameEventManager.Subscribe<HitBoltEvent>(m => OnHit(m as HitBoltEvent));
     }
 
@@ -84,7 +81,7 @@ public class GolfBallDataMediator : DataMediator<IGolfBallState>
         cooldownIndicator.color = state.Color;
     }
 
-    private void OnCooldownRatioChanged() 
+    private void OnCooldownRatioChanged()
         => cooldownIndicator.fillAmount = 1 - state.CooldownRatio;
 
     private void OnScoreChanged()
@@ -103,7 +100,7 @@ public class GolfBallDataMediator : DataMediator<IGolfBallState>
 
     private void OnIsKingChanged()
     {
-        kingIndicator.SetActive(state.IsKing);  
+        kingIndicator.SetActive(state.IsKing);
     }
 
     private void UpdatePreMoveIndicator()
@@ -112,9 +109,9 @@ public class GolfBallDataMediator : DataMediator<IGolfBallState>
 
         preMoveIndicator.enabled = state.PreMove != Vector3.zero;
 
-        preMoveIndicator.SetPositions(new Vector3[] 
-        { 
-            transform.position, 
+        preMoveIndicator.SetPositions(new Vector3[]
+        {
+            transform.position,
             transform.position + state.PreMove * maxPreMoveIndicatorLength
         });
     }

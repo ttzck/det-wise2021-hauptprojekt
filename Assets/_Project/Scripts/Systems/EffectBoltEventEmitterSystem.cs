@@ -1,8 +1,7 @@
 ﻿using Bolt;
 using System.Collections.Generic;
-using UnityEngine;
 using System.Linq;
-using System;
+using UnityEngine;
 
 public class EffectBoltEventEmitterSystem : ServerSystem
 {

@@ -1,12 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using Bolt;
+﻿using Bolt;
 using Bolt.Matchmaking;
-using UnityEngine.UI;
 using TMPro;
-using Bolt.Photon;
 using UdpKit;
+using UnityEngine;
 
 public class LobbyMenuManager : GlobalEventListener
 {

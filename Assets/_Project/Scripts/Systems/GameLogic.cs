@@ -1,7 +1,5 @@
-﻿using UnityEngine;
-using Bolt;
-using System.Collections.Generic;
-using System.Collections;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class GameLogic : MonoBehaviour
 {
@@ -27,7 +25,7 @@ public class GameLogic : MonoBehaviour
         new ControlZoneSystem().Initialise(activeSystems);
         new KingSystem().Initialise(activeSystems);
         new GolfBallCooldownSystem().Initialise(activeSystems);
-        
+
         gameState = BoltNetwork.Instantiate(BoltPrefabs.Game_State).GetState<IGameState>();
 
         foreach (var system in activeSystems)

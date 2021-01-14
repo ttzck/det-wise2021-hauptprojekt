@@ -1,6 +1,6 @@
-﻿using UnityEngine;
-using Bolt;
+﻿using Bolt;
 using System.Reflection;
+using UnityEngine;
 
 /// <summary>
 /// A DataMediator is meant to bridge the gap between BoltEntities, GameEvents and arbitrary Components of the GameObject.

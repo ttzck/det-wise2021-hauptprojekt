@@ -1,6 +1,4 @@
-﻿using Bolt;
-using System.Linq;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class GolfBallCooldownSystem : ServerSystem
 {
@@ -11,8 +9,8 @@ public class GolfBallCooldownSystem : ServerSystem
 
         foreach (var golfBall in golfBalls)
         {
-            golfBall.CooldownTimestamp = 
-                Time.time - 
+            golfBall.CooldownTimestamp =
+                Time.time -
                 Random.Range(0, GlobalSettings.GolfBallCooldown * .5f);
         }
     }
@@ -30,7 +28,7 @@ public class GolfBallCooldownSystem : ServerSystem
         }
     }
 
-    private void UpdateReadyToMove(IGolfBallState golfBall) 
+    private void UpdateReadyToMove(IGolfBallState golfBall)
         => golfBall.ReadyToMove =
             BoltNetwork.Time > golfBall.CooldownTimestamp + GlobalSettings.GolfBallCooldown;
 
@@ -46,8 +44,8 @@ public class GolfBallCooldownSystem : ServerSystem
         }
     }
 
-    private void UpdateCooldownRatio(IGolfBallState golfBall) 
-        => golfBall.CooldownRatio = 
-            1 - Mathf.Clamp01((BoltNetwork.Time - golfBall.CooldownTimestamp) 
+    private void UpdateCooldownRatio(IGolfBallState golfBall)
+        => golfBall.CooldownRatio =
+            1 - Mathf.Clamp01((BoltNetwork.Time - golfBall.CooldownTimestamp)
                 / GlobalSettings.GolfBallCooldown);
 }

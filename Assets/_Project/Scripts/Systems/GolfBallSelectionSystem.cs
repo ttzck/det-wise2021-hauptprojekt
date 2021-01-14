@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using Bolt;
+﻿using Bolt;
 using System.Linq;
+using UnityEngine;
 
 public class GolfBallSelectionSystem : GameSystem
 {
@@ -26,7 +24,7 @@ public class GolfBallSelectionSystem : GameSystem
             if (Input.GetMouseButtonDown(0))
             {
                 selectedGolfBall = FindNearestGolfBall();
-                if(selectedGolfBall != null)
+                if (selectedGolfBall != null)
                     gameInput.SelectedGolfBall = selectedGolfBall.NetworkId;
             }
         }

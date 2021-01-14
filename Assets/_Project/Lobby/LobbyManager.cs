@@ -1,9 +1,7 @@
-﻿using UnityEngine;
-using Bolt;
+﻿using Bolt;
 using Bolt.Matchmaking;
 using TMPro;
-using UdpKit.Platform.Photon;
-using System.Linq;
+using UnityEngine;
 
 public class LobbyManager : GlobalEventListener
 {

@@ -25,11 +25,11 @@ public class CollectablesSystem : ServerSystem
     private void OnCollision(object message)
     {
         var collision = message as CollisionMessage;
-        if (collision.EntityA.StateIs<IGolfBallState>() 
+        if (collision.EntityA.StateIs<IGolfBallState>()
             && collision.EntityB.StateIs<ICollectable>())
         {
             CollectCollectable(
-                collision.EntityA.GetState<IGolfBallState>(), 
+                collision.EntityA.GetState<IGolfBallState>(),
                 collision.EntityB.GetState<ICollectable>());
         }
     }
