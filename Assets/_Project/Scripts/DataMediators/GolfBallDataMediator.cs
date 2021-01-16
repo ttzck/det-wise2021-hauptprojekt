@@ -20,6 +20,9 @@ public class GolfBallDataMediator : DataMediator<IGolfBallState>
     [Header("King Indicator")]
     [SerializeField] private GameObject kingIndicator;
 
+    [Header("Trail")]
+    [SerializeField] private ParticleSystem trailParticleSystem;
+
 
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
@@ -79,6 +82,8 @@ public class GolfBallDataMediator : DataMediator<IGolfBallState>
     {
         spriteRenderer.color = state.Color;
         cooldownIndicator.color = state.Color;
+        var mainModul = trailParticleSystem.main;
+        mainModul.startColor = state.Color;
     }
 
     private void OnCooldownRatioChanged()

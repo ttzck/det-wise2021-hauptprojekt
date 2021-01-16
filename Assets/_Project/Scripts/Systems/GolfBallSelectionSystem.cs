@@ -33,7 +33,8 @@ public class GolfBallSelectionSystem : GameSystem
             if (Input.GetMouseButtonDown(1))
             {
                 ClearSelection();
-                selectedGolfBall.GetState<IGolfBallState>().PreMove = Vector3.zero;
+                if(BoltNetwork.IsServer) 
+                    selectedGolfBall.GetState<IGolfBallState>().PreMove = Vector3.zero;
             }
             else if (Input.GetMouseButtonDown(0))
             {
