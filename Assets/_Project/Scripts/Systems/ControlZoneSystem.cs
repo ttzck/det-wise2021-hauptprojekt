@@ -10,11 +10,10 @@ public class ControlZoneSystem : ServerSystem
     }
     private void OnCollision(CollisionMessage message)
     {
-        if (message.EntityB.TryFindState(out IGolfBallState golfBallState)
-            && (message.EntityA.TryFindState(out IControlZone controlZone)))
+        if (message.IsOfKind(out IGolfBallState golfBallState, out IControlZone controlZoneState))
         {
-            controlZone.Color = golfBallState.Color;
-            controlZone.TeamId = golfBallState.TeamId;
+            controlZoneState.Color = golfBallState.Color;
+            controlZoneState.TeamId = golfBallState.TeamId;
         }
 
         var zones = SystemUtils.FindAll<IControlZone>();

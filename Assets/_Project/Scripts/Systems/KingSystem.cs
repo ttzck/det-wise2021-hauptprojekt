@@ -12,8 +12,7 @@ public class KingSystem : ServerSystem
 
     private void OnCollision(CollisionMessage message)
     {
-        if (message.EntityA.TryFindState(out IGolfBallState golfBallStateA)
-            && message.EntityB.TryFindState(out IGolfBallState golfBallStateB)
+        if (message.IsOfKind(out IGolfBallState golfBallStateA, out IGolfBallState golfBallStateB)
             && golfBallStateA.TeamId != golfBallStateB.TeamId)
         {
             golfBallStateA.IsKing = golfBallStateB.IsKing = false;

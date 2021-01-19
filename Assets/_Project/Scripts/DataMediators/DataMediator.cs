@@ -57,20 +57,17 @@ public class DataMediator<T> : EntityBehaviour<T> where T : IState
             options: SendMessageOptions.DontRequireReceiver);
 
     private void OnCollisionEnter2D(Collision2D collision)
-        => TryPublishColllision(collision.gameObject);
+        => PublishColllision(collision.gameObject);
 
     private void OnTriggerEnter2D(Collider2D other)
-        => TryPublishColllision(other.gameObject);
+        => PublishColllision(other.gameObject);
 
-    private void TryPublishColllision(GameObject other)
+    private void PublishColllision(GameObject other)
     {
-        if (other.TryGetComponent(out BoltEntity otherEntity))
+        GameEventManager.Publish(new CollisionMessage
         {
-            GameEventManager.Publish(new CollisionMessage
-            {
-                EntityA = entity,
-                EntityB = otherEntity
-            });
-        }
+            GameObjectA = gameObject,
+            GameObjectB = other
+        });
     }
 }

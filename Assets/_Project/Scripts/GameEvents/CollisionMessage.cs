@@ -1,5 +1,7 @@
-﻿public class CollisionMessage
+﻿using UnityEngine;
+
+public class CollisionMessage
 {
-    public BoltEntity EntityA;
-    public BoltEntity EntityB;
+    public GameObject GameObjectA;
+    public GameObject GameObjectB;
 }

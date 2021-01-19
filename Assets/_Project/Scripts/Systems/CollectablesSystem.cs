@@ -5,7 +5,7 @@ public class CollectablesSystem : ServerSystem
 {
     public override void SetUp(IGameState _)
     {
-        GameEventManager.Subscribe<CollisionMessage>(OnCollision);
+        GameEventManager.Subscribe<CollisionMessage>(m => OnCollision(m as CollisionMessage));
 
         foreach (var spot in SystemUtils.FindEntitiesWith<ICollectableSpot>())
         {
@@ -22,15 +22,11 @@ public class CollectablesSystem : ServerSystem
         }
     }
 
-    private void OnCollision(object message)
+    private void OnCollision(CollisionMessage collision)
     {
-        var collision = message as CollisionMessage;
-        if (collision.EntityA.StateIs<IGolfBallState>()
-            && collision.EntityB.StateIs<ICollectable>())
+        if (collision.IsOfKind(out IGolfBallState golfBallState, out ICollectable collectableState))
         {
-            CollectCollectable(
-                collision.EntityA.GetState<IGolfBallState>(),
-                collision.EntityB.GetState<ICollectable>());
+            CollectCollectable(golfBallState, collectableState);
         }
     }
 
