@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using UnityEngine;
+using Bolt;
 
 public class CollectablesSystem : ServerSystem
 {
@@ -37,6 +38,7 @@ public class CollectablesSystem : ServerSystem
         collectable.Enabled = false;
         spot.Enabled = true;
         spot.CooldownTimestamp = Time.time;
+        CollectableEffectBoltEvent.Post(GlobalTargets.Everyone, ReliabilityModes.Unreliable);
     }
 
     public override void Execute(IGameState gameState)

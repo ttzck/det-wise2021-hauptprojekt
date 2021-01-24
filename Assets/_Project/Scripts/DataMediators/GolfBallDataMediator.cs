@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Bolt;
 
 [System.Diagnostics.CodeAnalysis.SuppressMessage("CodeQuality", "IDE0051:Remove unused private members", Justification = "Using Unity Messages")]
 public class GolfBallDataMediator : DataMediator<IGolfBallState>
@@ -49,7 +50,7 @@ public class GolfBallDataMediator : DataMediator<IGolfBallState>
     {
         if (hit.Id == entity.NetworkId)
             if (state.ReadyToMove)
-                rb.AddForce(hit.Force * GlobalSettings.ForceScale);
+                HitGolfBall(hit.Force);
             else
                 state.PreMove = hit.Force;
     }
@@ -58,13 +59,20 @@ public class GolfBallDataMediator : DataMediator<IGolfBallState>
     {
         if (BoltNetwork.IsServer && state.ReadyToMove && state.PreMove != Vector3.zero)
         {
-            rb.AddForce(state.PreMove * GlobalSettings.ForceScale);
-            state.PreMove = Vector3.zero;
+            HitGolfBall(state.PreMove);
         }
 
         state.Velocity = rb != null ? rb.velocity.magnitude : 0;
         UpdateScoreIndicators();
         UpdatePreMoveIndicator();
+    }
+
+    private void HitGolfBall(Vector2 force)
+    {
+        rb.AddForce(force * GlobalSettings.ForceScale);
+        HitBoltEffectEvent.Post(GlobalTargets.Everyone,
+                    ReliabilityModes.Unreliable, transform.position, force.magnitude);
+        state.PreMove = Vector3.zero;
     }
 
     private void UpdateScoreIndicators()
