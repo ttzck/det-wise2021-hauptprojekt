@@ -11,7 +11,6 @@ public class GameDataMediator : DataMediator<IGameState>
         if (!state.IsOver) return;
 
         var ind = Instantiate(gameOverIndicator);
-        ind.GetComponentInChildren<Image>().color = GameUtils
-            .GetTeamColor(state.WinnerId, state.NumberOfTeams);
+        ind.GetComponentInChildren<Image>().color = state.WinnerColor;
     }
 }

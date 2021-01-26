@@ -13,4 +13,6 @@ public static class GlobalSettings
     public static int CollectablesWinCondition = 5;
 
     public static float GolfBallCooldown = 3f;
+
+    public static float ZoneCaptureTime = 1f;
 }

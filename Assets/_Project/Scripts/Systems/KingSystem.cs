@@ -13,7 +13,8 @@ public class KingSystem : ServerSystem
     private void OnCollision(CollisionMessage message)
     {
         if (message.IsOfKind(out IGolfBallState golfBallStateA, out IGolfBallState golfBallStateB)
-            && golfBallStateA.TeamId != golfBallStateB.TeamId)
+            && golfBallStateA.TeamId != golfBallStateB.TeamId
+            && (!golfBallStateA.IsKing || !golfBallStateB.IsKing))
         {
             golfBallStateA.IsKing = golfBallStateB.IsKing = false;
         }
@@ -22,7 +23,7 @@ public class KingSystem : ServerSystem
         if (kings.Count() == 1)
         {
             gameState.IsOver = true;
-            gameState.WinnerId = kings.First().TeamId;
+            gameState.WinnerColor = kings.First().Color;
         }
     }
 }

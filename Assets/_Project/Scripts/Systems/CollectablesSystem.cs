@@ -62,7 +62,8 @@ public class CollectablesSystem : ServerSystem
         if (winner != null)
         {
             gameState.IsOver = true;
-            gameState.WinnerId = winner.TeamId;
+            gameState.WinnerColor = SystemUtils
+            .FindAll<IGolfBallState>().First(i => i.TeamId == winner.TeamId).Color;
         }
     }
 

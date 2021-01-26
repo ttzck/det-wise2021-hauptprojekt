@@ -1,20 +1,18 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 [System.Diagnostics.CodeAnalysis.SuppressMessage("CodeQuality", "IDE0051:Remove unused private members", Justification = "Using Unity Messages")]
 public class ControlZoneDataMediator : DataMediator<IControlZone>
 {
-    private SpriteRenderer spriteRenderer;
+    [SerializeField] private Image captureIndicator;
 
-    public override void Attached()
+    private void OnCaptureRatioChanged()
     {
-        base.Attached();
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        captureIndicator.fillAmount = state.CaptureRatio;
     }
 
     private void OnColorChanged()
     {
-        var newColor = state.Color;
-        newColor.a = spriteRenderer.color.a;
-        spriteRenderer.color = newColor;
+        captureIndicator.color = state.Color;
     }
 }
