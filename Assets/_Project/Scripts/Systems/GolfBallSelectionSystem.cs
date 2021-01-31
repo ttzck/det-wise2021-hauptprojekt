@@ -51,8 +51,8 @@ public class GolfBallSelectionSystem : GameSystem
 
     private BoltEntity FindNearestGolfBall()
     {
-        return BoltNetwork.Entities
-            .Where(i => i.HasControl)
+        return SystemUtils.FindEntitiesWith<IGolfBallState>()
+            .Where(i => i.HasControl && i.GetState<IGolfBallState>().Alive)
             .OrderBy(i => Vector2.Distance(MousePosition, i.transform.position))
             .FirstOrDefault();
     }

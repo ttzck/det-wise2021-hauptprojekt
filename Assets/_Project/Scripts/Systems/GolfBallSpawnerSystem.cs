@@ -47,6 +47,7 @@ public class GolfBallSpawnerSystem : ServerSystem
         state.Color = team.color;
         state.TeamId = team.teamId;
         state.IsKing = isKing;
+        state.Alive = true;
 
         if (team.client == null) golfBall.TakeControl();
         else golfBall.AssignControl(team.client);
@@ -57,8 +58,6 @@ public class GolfBallSpawnerSystem : ServerSystem
         public BoltConnection client;
         public Color color;
         public int teamId;
-
-
     }
 }
 

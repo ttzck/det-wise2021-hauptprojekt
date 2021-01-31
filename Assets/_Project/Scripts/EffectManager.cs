@@ -10,6 +10,8 @@ public class EffectManager : GlobalEventListener
     [SerializeField] private GameObject collectableSoundEffect;
     [SerializeField] private GameObject wallCollisionSoundEffect;
     [SerializeField] private LayerMask wallLayerMask;
+    [SerializeField] private GameObject waterSoundEffect;
+    [SerializeField] private GameObject waterParticleEffect;
 
     private void Start()
     {
@@ -38,5 +40,11 @@ public class EffectManager : GlobalEventListener
     public override void OnEvent(WallCollisionEffectEvent evnt)
     {
         Instantiate(wallCollisionSoundEffect);
+    }
+
+    public override void OnEvent(WaterEffectEvent evnt)
+    {
+        Instantiate(waterSoundEffect);
+        Instantiate(waterParticleEffect, evnt.Position, Quaternion.identity);
     }
 }

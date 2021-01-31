@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class GameLogic : MonoBehaviour
 {
+    [SerializeField] private LayerMask waterLayerMask;
+
     private readonly List<ISystem> activeSystems = new List<ISystem>();
 
     private IGameState gameState;
@@ -20,6 +22,7 @@ public class GameLogic : MonoBehaviour
         new ControlZoneSystem().Initialise(activeSystems);
         new KingSystem().Initialise(activeSystems);
         new GolfBallCooldownSystem().Initialise(activeSystems);
+        new WaterSystem(waterLayerMask).Initialise(activeSystems);
 
         gameState = BoltNetwork.Instantiate(BoltPrefabs.Game_State).GetState<IGameState>();
 
