@@ -299,5 +299,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingBlocks:
-  - {fileID: 3499197475139027987, guid: 108fd76440b674faa81d3188b98970c3, type: 3}
-  - {fileID: 2566606072816934755, guid: 2023002fec6804848a3654f7f80aee4b, type: 3}
+  - {fileID: 8265521797064913795, guid: 2490e6dabdd38b84f9e1efc4f8b5f375, type: 3}
+  - {fileID: 8212192442746204502, guid: d5c450247565eef4cb4c0b369f545e0a, type: 3}
+  - {fileID: 6287616326725317920, guid: 37e4dce8c0223184094d99cdb6e67143, type: 3}
+  - {fileID: 505105512027434177, guid: 72ca5b2cc9c825c4b9d392f1402cc1b5, type: 3}
+  - {fileID: 4627802283588661401, guid: 5beec911e7de0a94ea930a9f5ceb6386, type: 3}
+  - {fileID: 8286200145432607796, guid: 7f950adfd551deb4a86ab9480ae2cdb6, type: 3}
+  - {fileID: 2566288790631686083, guid: 9156eedf2e33c0847b70eb98b918dea1, type: 3}
+  - {fileID: 2124102082295372531, guid: d41f29b6e1f6c0e44837431553310c9a, type: 3}
+  - {fileID: 8198108182111643393, guid: 821599829e91ff54eb2524f37ca4e4d5, type: 3}
+  - {fileID: 5624826313153495555, guid: eb554237eedcc3c4f9b3d23845c167ac, type: 3}
+  - {fileID: 5745170363645420447, guid: 70b8753af04fabc448d330643af766b3, type: 3}
+  numberOfCollectablePoints: 5
+  numberOfControlZones: 3
+  Collectable_Spot: {fileID: 3740698053882933622, guid: c6dfb9a1d2034df43bd29ca137368c9e,
+    type: 3}
+  ControlZone: {fileID: 8738333775031870291, guid: e32e73ea11e7248dab3972df41097b18,
+    type: 3}
