@@ -13,13 +13,16 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] private GameObject Collectable_Spot;
     [SerializeField] private GameObject ControlZone;
 
+    private List<Vector2> displayedGrids;
+    private Color displayedColor;
+
     [ContextMenu("Generator")]
     public void Generate()
     {
-        Generate(Random.Range(int.MinValue, int.MaxValue));
+        StartCoroutine(Generate(Random.Range(int.MinValue, int.MaxValue)));
     }
 
-    public void Generate(int seed)
+    public IEnumerator Generate(int seed)
     {
         GameObject level = new GameObject("level");
         HashSet<Vector2> freeGrids = new HashSet<Vector2>();
@@ -49,6 +52,8 @@ public class LevelGenerator : MonoBehaviour
             Translate(ref toMove, freeGrid);
 
             var hashSet = new HashSet<Vector2>(toMove);
+            displayedColor = hashSet.IsSubsetOf(freeGrids) ? Color.white : Color.red;
+            displayedGrids = toMove;
 
             if (hashSet.IsSubsetOf(freeGrids))
             {
@@ -66,6 +71,9 @@ public class LevelGenerator : MonoBehaviour
                 Translate(ref buidlingBlockInstance.collectableSpawnPoints, freeGrid);
                 Translate(ref buidlingBlockInstance.controlZoneSpawnPoints, freeGrid);
             }
+
+
+            yield return new WaitForSeconds(.1f);
         }
 
         if (BoltNetwork.IsServer)
@@ -109,5 +117,15 @@ public class LevelGenerator : MonoBehaviour
 
     public static Vector2 ToArenaCoords(Vector2 worldCoords)
         => worldCoords - 0.5f * GlobalSettings.ArenaDimensions + Vector2.one * 0.5f;
+
+    private void OnDrawGizmos()
+    {
+        if (displayedGrids == null) return;
+        Gizmos.color = displayedColor;
+        foreach (var point in displayedGrids)
+        {
+            Gizmos.DrawWireCube(ToArenaCoords(point), Vector3.one);
+        }
+    }
 }
 
