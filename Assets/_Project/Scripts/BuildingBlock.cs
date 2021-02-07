@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class BuildingBlock : MonoBehaviour
 {
+    [Range(0f, 1f)]
+    public float probabilityWeight = 1f;
+
     public List<Vector2> gridCells = new List<Vector2>();
     public List<Vector2> collectableSpawnPoints = new List<Vector2>();
     public List<Vector2> controlZoneSpawnPoints = new List<Vector2>();

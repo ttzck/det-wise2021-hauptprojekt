@@ -43,6 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 901376cdd80f3490db8461855796f976, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  probabilityWeight: 0.1
   gridCells:
   - {x: 0, y: 0}
   collectableSpawnPoints: []

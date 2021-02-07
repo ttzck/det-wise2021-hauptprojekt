@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
-    private const int UpperBound = 1000;
+    private const int UpperBound = 100000;
     [SerializeField] private List<BuildingBlock> buildingBlocks;
     [SerializeField] private int numberOfCollectablePoints;
     [SerializeField] private int numberOfControlZones;
@@ -14,10 +14,18 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] private GameObject ControlZone;
 
     [ContextMenu("Generator")]
-    public void Genertor()
+    public void Generate()
+    {
+        Generate(Random.Range(int.MinValue, int.MaxValue));
+    }
+
+    public void Generate(int seed)
     {
         GameObject level = new GameObject("level");
         HashSet<Vector2> freeGrids = new HashSet<Vector2>();
+
+        Random.InitState(seed);
+
         for (int x = 0; x < GlobalSettings.ArenaDimensions.x; x++)
         {
             for (int y = 0; y < GlobalSettings.ArenaDimensions.y; y++)
@@ -35,6 +43,7 @@ public class LevelGenerator : MonoBehaviour
             var rotation = Random.Range(0, 4);
             var toMove = buildingBlock.gridCells.ToList();
 
+            if (buildingBlock.probabilityWeight < Random.value) continue;
 
             Rotate(ref toMove, rotation);
             Translate(ref toMove, freeGrid);
@@ -59,21 +68,23 @@ public class LevelGenerator : MonoBehaviour
             }
         }
 
-        //if (BoltNetwork.IsServer)
-        var collectableSpawnPoints = FindObjectsOfType<BuildingBlock>().SelectMany(i => i.collectableSpawnPoints).ToList();
-        for (int i = 0; i < numberOfCollectablePoints && collectableSpawnPoints.Any(); i++)
+        if (BoltNetwork.IsServer)
         {
-            var randPos = RandomElementFrom(collectableSpawnPoints);
-            Instantiate(Collectable_Spot, ToArenaCoords(randPos), Quaternion.identity);
-            collectableSpawnPoints.Remove(randPos);
-        }
+            var collectableSpawnPoints = FindObjectsOfType<BuildingBlock>().SelectMany(i => i.collectableSpawnPoints).ToList();
+            for (int i = 0; i < numberOfCollectablePoints && collectableSpawnPoints.Any(); i++)
+            {
+                var randPos = RandomElementFrom(collectableSpawnPoints);
+                BoltNetwork.Instantiate(Collectable_Spot, ToArenaCoords(randPos), Quaternion.identity);
+                collectableSpawnPoints.Remove(randPos);
+            }
 
-        var controlZoneSpawnPoints = FindObjectsOfType<BuildingBlock>().SelectMany(i => i.controlZoneSpawnPoints).ToList();
-        for (int i = 0; i < numberOfControlZones && controlZoneSpawnPoints.Any(); i++)
-        {
-            var randPos = RandomElementFrom(controlZoneSpawnPoints);
-            Instantiate(ControlZone, ToArenaCoords(randPos), Quaternion.identity);
-            controlZoneSpawnPoints.Remove(randPos);
+            var controlZoneSpawnPoints = FindObjectsOfType<BuildingBlock>().SelectMany(i => i.controlZoneSpawnPoints).ToList();
+            for (int i = 0; i < numberOfControlZones && controlZoneSpawnPoints.Any(); i++)
+            {
+                var randPos = RandomElementFrom(controlZoneSpawnPoints);
+                BoltNetwork.Instantiate(ControlZone, ToArenaCoords(randPos), Quaternion.identity);
+                controlZoneSpawnPoints.Remove(randPos);
+            }
         }
     }
 

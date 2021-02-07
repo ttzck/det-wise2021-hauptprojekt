@@ -1,12 +1,20 @@
 ﻿using System.Linq;
 using UnityEngine;
+using Bolt;
 
-public class GolfBallSpawnerSystem : ServerSystem
+public class GameSetupSystem : GameSystem
 {
+    private int seed;
+
+    public GameSetupSystem(int seed)
+    {
+        this.seed = seed;
+    }
+
     public override void SetUp(IGameState gameState)
     {
-        gameState.NumberOfTeams = BoltNetwork.Clients.Count();
-        SpawnGolfBalls();
+        Object.FindObjectOfType<LevelGenerator>().Generate(seed);
+        if (BoltNetwork.IsServer) SpawnGolfBalls();
     }
 
     private void SpawnGolfBalls()

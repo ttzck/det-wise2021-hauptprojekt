@@ -1391,6 +1391,28 @@
       "Name": "WaterEffectEvent",
       "Guid": "e162f8ba-19da-4e64-85dd-804ee407aa5b",
       "Groups": []
+    },
+    {
+      "$type": "Bolt.Compiler.EventDefinition, bolt.compiler",
+      "Properties": [
+        {
+          "Name": "Seed",
+          "Enabled": true,
+          "Expanded": true,
+          "ReplicationMode": 1,
+          "Priority": 1,
+          "PropertyType": {
+            "$type": "Bolt.Compiler.PropertyTypeInteger, bolt.compiler",
+            "MaxValue": 255
+          },
+          "AssetSettings": {
+            "$type": "Bolt.Compiler.PropertyEventSettings, bolt.compiler"
+          }
+        }
+      ],
+      "Name": "SetupGameEvent",
+      "Guid": "1ce883ac-a6d0-429c-9e65-0803dd53eec2",
+      "Groups": []
     }
   ],
   "ActiveGroup": "Everything"
