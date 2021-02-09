@@ -19,7 +19,7 @@ MonoBehaviour:
     maxEntityPriority: 65536
     maxPropertyPriority: 2048
     scopeMode: 0
-    logTargets: 3
+    logTargets: 0
     disableDejitterBuffer: 0
     clientSendRate: 3
     clientDejitterDelay: 6
@@ -34,7 +34,7 @@ MonoBehaviour:
     commandQueueSize: 60
     commandRedundancy: 6
     commandPingMultiplier: 1.25
-    useNetworkSimulation: 1
+    useNetworkSimulation: 0
     simulatedLoss: 0.02
     simulatedPingMean: 30
     simulatedPingJitter: 10
